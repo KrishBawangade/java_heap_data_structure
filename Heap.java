@@ -32,7 +32,7 @@ public class Heap<T extends Comparable<T>>{
     }
 
     private void upheap(int i){
-        if(list.get(i) == 0){
+        if(i == 0){
             return;
         }
 
@@ -40,7 +40,7 @@ public class Heap<T extends Comparable<T>>{
         // for finding minimum value
         if(list.get(i).compareTo(list.get(p)) < 0){
             swap(i, p);
-            uphead(p);
+            upheap(p);
         }
     }
 
@@ -83,5 +83,13 @@ public class Heap<T extends Comparable<T>>{
         }
     }
 
-    public List<T> heapSort()
+    public List<T> heapSort() throws Exception{
+        List<T> data = new ArrayList<>();
+
+        while(!list.isEmpty()){
+            data.add(this.remove());
+        }
+
+        return data;
+    }
 }
